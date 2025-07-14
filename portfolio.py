@@ -134,10 +134,15 @@ st.markdown("""
 
 # Download CV
 try:
-    with open("cv.pdf", "rb") as file:
-        st.download_button(label="📄 Download My CV", data=file, file_name="Ebenezer_Kwaw_CV.pdf", mime="application/pdf")
+    with open("Ebenezer kwaw CV.pdf", "rb") as file:
+        st.download_button(
+            label="📄 Download My CV",
+            data=file,
+            file_name="Ebenezer_Kwaw_CV.pdf",
+            mime="application/pdf"
+        )
 except FileNotFoundError:
-    st.warning("Upload 'cv.pdf' to enable the download button.")
+    st.warning("Upload 'Ebenezer kwaw CV.pdf' to enable the download button.")
 
 # Projects
 st.markdown("""
