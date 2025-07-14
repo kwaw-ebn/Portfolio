@@ -26,7 +26,7 @@ for img_name in ["project.png", "project1.png", "project2.png"]:
     except:
         pass
 
-# Header section
+# Apply sea blue background with custom styles
 st.markdown("""
     <style>
         .main, .block-container {
@@ -40,10 +40,11 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+# Header
 st.title("Ebenezer Kwaw")
 st.subheader("Public Health Specialist | Data & ML Practitioner | AI Enthusiast | Future Cybersecurity Analyst | Cloud Engineer in Training | Nutrition Advocate")
 
-# Show profile pictures
+# Profile Pictures
 if profile_images:
     st.markdown("### 📸 Profile Pictures")
     cols = st.columns(len(profile_images))
@@ -134,7 +135,7 @@ st.markdown("""
 
 # Download CV
 try:
-    with open("Ebenezer kwaw CV.pdf", "rb") as file:
+    with open("cv.pdf", "rb") as file:
         st.download_button(
             label="📄 Download My CV",
             data=file,
@@ -142,7 +143,7 @@ try:
             mime="application/pdf"
         )
 except FileNotFoundError:
-    st.warning("Upload 'Ebenezer kwaw CV.pdf' to enable the download button.")
+    st.warning("Upload 'cv.pdf' to enable the download button.")
 
 # Projects
 st.markdown("""
