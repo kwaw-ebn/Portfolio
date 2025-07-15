@@ -6,7 +6,11 @@ from PIL import Image
 # Page config
 st.set_page_config(page_title="Kwaw Ebenezer Portfolio", page_icon="📄", layout="wide")
 
-# Custom background (light gray)
+# Sidebar Navigation
+st.sidebar.title("📂 Navigation")
+selection = st.sidebar.radio("Go to", ["Home", "CV", "Projects", "Contact"])
+
+# Custom Styles
 st.markdown("""
     <style>
     body {
@@ -28,139 +32,148 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Header
-st.title("Kwaw Ebenezer")
-st.subheader("Public Health Specialist | Data & ML Practitioner | AI Enthusiast")
+# Load Images
+profile_pic = Image.open("profile1.png")
+project1 = Image.open("project.png")
+project2 = Image.open("project2.png")
+project3 = Image.open("project1.png")
 
-st.markdown("""
-📍 **Accra, Ghana**  
-📧 ebenezer.kwaw@ghs.gov.gh | ekwaw4545@gmail.com  
-🔗 [LinkedIn](https://www.linkedin.com/in/kwaw-ebenezer-a40117159) | [GitHub](https://github.com/kwaw-ebn/kwaw-ebn)  
-📱 +233244837234  
-📄 [Download CV](https://github.com/kwaw-ebn/Portfolio/blob/main/cv.pdf)
-""")
+# Home Page
+if selection == "Home":
+    st.image(profile_pic, width=180)
+    st.title("Kwaw Ebenezer")
+    st.subheader("Public Health Specialist | Data & ML Practitioner | AI Enthusiast")
 
-# About Me
-st.header("👋 About Me")
-st.write("""
-I am a dedicated Public Health Specialist with over 7 years of experience designing and implementing community health and nutrition programs. 
-My mission is to improve lives using evidence-based strategies enhanced with technology.
-
-I’m currently transitioning into a Data & AI Practitioner role, applying machine learning, data analytics, and interactive web apps to solve real-world problems in public and preventive health. 
-I’m passionate about using AI and digital health to improve lives in low-resource settings and open to collaborating on impactful data-driven projects.
-""")
-
-# Skills
-st.header("🛠 Skills")
-col1, col2, col3 = st.columns(3)
-
-with col1:
-    st.subheader("Technical")
     st.markdown("""
-- Python, Jupyter Notebook
-- Pandas, Numpy, Scikit-learn
-- Streamlit, Power BI, SQL
-- Excel, Kobo Toolbox
-- Model Deployment
+    📍 **Accra, Ghana**  
+    📧 ebenezer.kwaw@ghs.gov.gh | ekwaw4545@gmail.com  
+    🔗 [LinkedIn](https://www.linkedin.com/in/kwaw-ebenezer-a40117159) | [GitHub](https://github.com/kwaw-ebn/kwaw-ebn)  
+    📱 +233244837234  
+    📄 [Download CV](https://github.com/kwaw-ebn/Portfolio/blob/main/cv.pdf)
     """)
 
-with col2:
-    st.subheader("Public Health / Analytics")
-    st.markdown("""
-- M&E Systems, SBCC
-- Survey Design
-- Data Cleaning & Analysis
-- Predictive Modelling
-- Health Systems Strengthening
+    st.header("👋 About Me")
+    st.write("""
+    I am a dedicated Public Health Specialist with over 7 years of experience designing and implementing community health and nutrition programs. 
+    My mission is to improve lives using evidence-based strategies enhanced with technology.
+
+    I’m currently transitioning into a Data & AI Practitioner role, applying machine learning, data analytics, and interactive web apps to solve real-world problems in public and preventive health. 
+    I’m passionate about using AI and digital health to improve lives in low-resource settings and open to collaborating on impactful data-driven projects.
     """)
 
-with col3:
-    st.subheader("Soft Skills")
+# CV Page
+elif selection == "CV":
+    st.header("🛠 Skills")
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        st.subheader("Technical")
+        st.markdown("""
+    - Python, Jupyter Notebook
+    - Pandas, Numpy, Scikit-learn
+    - Streamlit, Power BI, SQL
+    - Excel, Kobo Toolbox
+    - Model Deployment
+        """)
+
+    with col2:
+        st.subheader("Public Health / Analytics")
+        st.markdown("""
+    - M&E Systems, SBCC
+    - Survey Design
+    - Data Cleaning & Analysis
+    - Predictive Modelling
+    - Health Systems Strengthening
+        """)
+
+    with col3:
+        st.subheader("Soft Skills")
+        st.markdown("""
+    - Leadership & Teamwork
+    - Communication & Reporting
+    - Project Management
+    - Problem Solving
+    - Community Mobilization
+        """)
+
+    st.header("💼 Work Experience")
     st.markdown("""
-- Leadership & Teamwork
-- Communication & Reporting
-- Project Management
-- Problem Solving
-- Community Mobilization
+    **Public Health Specialist / AI Practitioner** – Self-employed (2025–Present)
+    - Build data-driven tools for public health
+    - Train in cloud & cybersecurity
+
+    **District Nutrition Officer** – GHS, Agona East (2021–Present)
+    - Led immunization programs & emergency preparedness
+    - Developed tools for health monitoring
+
+    **Program Coordinator – IPTp** – RootsLink Africa (2023–Present)
+    - Coordinated malaria prevention across Agona East
+    - Built M&E tools and campaign materials
+
+    **Nutritionist** – Samartex Hospital (2018–2021)
+    **Nutritionist** – Shama Health Center (2016–2017)
     """)
 
-# Projects
-st.header("🚀 Projects")
+    st.header("🔬 Research Contributor")
+    st.markdown("""
+    **Title:** Assessing the Prevalence of Hypertension and Obesity Among Diabetics in Tamale Metropolis (2017)  
+    🔗 [Read Paper](https://www.researchgate.net/profile/Yussif-Adams/publication/315943323_Assessing_the_Prevalence_of_Hypertension_and_Obesity_among_Diabetics_in_the_Tamale_Metropolis_Ghana/links/5f40c768a6fdcccc43e55e10/Assessing-the-Prevalence-of-Hypertension-and-Obesity-among-Diabetics-in-the-Tamale-Metropolis-Ghana.pdf)
+    """)
 
-st.subheader("ITN Usage Prediction Web App")
-st.markdown("""
-Developed and deployed a machine learning model to predict ITN usage. Supports malaria prevention planning.
+    st.header("📌 Programs Managed")
+    st.markdown("""
+    - Girls’ Iron-Folic Tablet Supplementation (GIFTS)
+    - Wellness Clinic Coordinator, Agona East
+    - IYCF Training Program (with Kokoplus Ghana)
+    """)
 
-🔗 [GitHub](https://github.com/kwaw-ebn/ITN-Usage-Prediction)  
-🔗 [Live App](https://itn-usage-prediction-nywkrcihz3teyjvze27um8.streamlit.app/)
-""")
+    st.header("🎓 Education & Certifications")
+    st.markdown("""
+    - BSc. Public Health (Nutrition), UDS (2012–2016)
+    - Data Science, Thrive Africa & KTU (2025)
+    - AI & ML, Thrive Africa & KTU (2025)
+    - Cybersecurity, Thrive Africa & KTU (2025)
+    - Data Lab Certificate, WorldQuant University (ongoing)
+    - Cloud Engineer Certificate (ongoing)
+    - M&E and Global Health Courses – University of Washington (2023)
+    """)
 
-st.subheader("Loan Defaulter Risk Prediction App")
-st.markdown("""
-A supervised ML model to classify loan risk, deployed with an interactive web interface.
+# Projects Page
+elif selection == "Projects":
+    st.header("🚀 Projects")
 
-🔗 [GitHub](https://github.com/kwaw-ebn/Machine-Learning-Model-to-predict-Loan-Defaulters)  
-🔗 [Live App](https://machine-learning-model-to-predict-loan-defaulters-mazkvkvr4t2q.streamlit.app/)
-""")
+    st.subheader("ITN Usage Prediction Web App")
+    st.image(project1, caption="ITN Prediction Tool", use_column_width=True)
+    st.markdown("""
+    Developed and deployed a machine learning model to predict ITN usage. Supports malaria prevention planning.
+    
+    🔗 [GitHub](https://github.com/kwaw-ebn/ITN-Usage-Prediction)  
+    🔗 [Live App](https://itn-usage-prediction-nywkrcihz3teyjvze27um8.streamlit.app/)
+    """)
 
-st.subheader("Movie Recommendation System")
-st.markdown("""
-Content-based movie recommender using cosine similarity and Streamlit.
+    st.subheader("Loan Defaulter Risk Prediction App")
+    st.image(project2, caption="Loan Risk Classifier UI", use_column_width=True)
+    st.markdown("""
+    A supervised ML model to classify loan risk, deployed with an interactive web interface.
 
-🔗 [GitHub](https://github.com/kwaw-ebn/Movie_Recommendation)  
-🔗 [Live App](https://movierecommendation-khmzfv7djvecuar2hcmc6j.streamlit.app/)
-""")
+    🔗 [GitHub](https://github.com/kwaw-ebn/Machine-Learning-Model-to-predict-Loan-Defaulters)  
+    🔗 [Live App](https://machine-learning-model-to-predict-loan-defaulters-mazkvkvr4t2q.streamlit.app/)
+    """)
 
-# Experience
-st.header("💼 Work Experience")
-st.markdown("""
-**Public Health Specialist / AI Practitioner** – Self-employed (2025–Present)
-- Build data-driven tools for public health
-- Train in cloud & cybersecurity
+    st.subheader("Movie Recommendation System")
+    st.image(project3, caption="Movie Recommender UI", use_column_width=True)
+    st.markdown("""
+    Content-based movie recommender using cosine similarity and Streamlit.
 
-**District Nutrition Officer** – GHS, Agona East (2021–Present)
-- Led immunization programs & emergency preparedness
-- Developed tools for health monitoring
+    🔗 [GitHub](https://github.com/kwaw-ebn/Movie_Recommendation)  
+    🔗 [Live App](https://movierecommendation-khmzfv7djvecuar2hcmc6j.streamlit.app/)
+    """)
 
-**Program Coordinator – IPTp** – RootsLink Africa (2023–Present)
-- Coordinated malaria prevention across Agona East
-- Built M&E tools and campaign materials
-
-**Nutritionist** – Samartex Hospital (2018–2021)
-**Nutritionist** – Shama Health Center (2016–2017)
-""")
-
-# Research
-st.header("🔬 Research Contributor")
-st.markdown("""
-**Title:** Assessing the Prevalence of Hypertension and Obesity Among Diabetics in Tamale Metropolis (2017)  
-🔗 [Read Paper](https://www.researchgate.net/profile/Yussif-Adams/publication/315943323_Assessing_the_Prevalence_of_Hypertension_and_Obesity_among_Diabetics_in_the_Tamale_Metropolis_Ghana/links/5f40c768a6fdcccc43e55e10/Assessing-the-Prevalence-of-Hypertension-and-Obesity-among-Diabetics-in-the-Tamale-Metropolis-Ghana.pdf)
-""")
-
-# Programs Managed
-st.header("📌 Programs Managed")
-st.markdown("""
-- Girls’ Iron-Folic Tablet Supplementation (GIFTS)
-- Wellness Clinic Coordinator, Agona East
-- IYCF Training Program (with Kokoplus Ghana)
-""")
-
-# Education & Certifications
-st.header("🎓 Education & Certifications")
-st.markdown("""
-- BSc. Public Health (Nutrition), UDS (2012–2016)
-- Data Science, Thrive Africa & KTU (2025)
-- AI & ML, Thrive Africa & KTU (2025)
-- Cybersecurity, Thrive Africa & KTU (2025)
-- Data Lab Certificate, WorldQuant University (ongoing)
-- Cloud Engineer Certificate (ongoing)
-- M&E and Global Health Courses – University of Washington (2023)
-""")
-
-# Contact
-st.header("📬 Contact")
-st.markdown("""
-📧 ebenezer.kwaw@ghs.gov.gh / ekwaw4545@gmail.com  
-🔗 [LinkedIn](https://www.linkedin.com/in/kwaw-ebenezer-a40117159)  
-📱 +233244837234
-""")
+# Contact Page
+elif selection == "Contact":
+    st.header("📬 Contact")
+    st.markdown("""
+    📧 ebenezer.kwaw@ghs.gov.gh / ekwaw4545@gmail.com  
+    🔗 [LinkedIn](https://www.linkedin.com/in/kwaw-ebenezer-a40117159)  
+    📱 +233244837234
+    """)
