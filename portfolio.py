@@ -7,11 +7,11 @@ import os
 # Page config
 st.set_page_config(page_title="Kwaw Ebenezer Portfolio", page_icon="📄", layout="wide")
 
-# Custom Styles
+# Custom Styles with sea blue background
 st.markdown("""
     <style>
-    body {
-        background-color: #e0f7fa;
+    html, body, [class*="css"]  {
+        background-color: #caf0f8;
     }
     a {
         color: #0077b6;
@@ -34,12 +34,15 @@ def load_image(filename, caption=None, width=None):
     path = os.path.join("images", filename)
     try:
         img = Image.open(path)
-        st.image(img, caption=caption, use_column_width=True if width is None else False, width=width)
+        st.image(img, caption=caption, use_container_width=(width is None))
     except FileNotFoundError:
         st.warning(f"Image '{filename}' not found in 'images/' folder.")
 
-# Header and Introduction
+# Profile Picture
+st.header("👋 About Me")
 load_image("profile1.png", width=180)
+
+# Intro
 st.title("Kwaw Ebenezer")
 st.subheader("Public Health Specialist | Data & ML Practitioner | AI Enthusiast")
 
@@ -51,8 +54,6 @@ st.markdown("""
 📄 [Download CV](https://github.com/kwaw-ebn/Portfolio/blob/main/cv.pdf)
 """)
 
-# About Me
-st.header("👋 About Me")
 st.write("""
 I am a dedicated Public Health Specialist with over 7 years of experience designing and implementing community health and nutrition programs. 
 My mission is to improve lives using evidence-based strategies enhanced with technology.
