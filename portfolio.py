@@ -32,15 +32,17 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Load Images
-profile_pic = Image.open("profile1.png")
-project1 = Image.open("project.png")
-project2 = Image.open("project2.png")
-project3 = Image.open("project1.png")
+# Safe image loader
+def load_image(path, caption=None, width=None):
+    try:
+        img = Image.open(path)
+        st.image(img, caption=caption, use_column_width=True if width is None else False, width=width)
+    except FileNotFoundError:
+        st.warning(f"Image file '{path}' not found. Please upload it to the same directory.")
 
 # Home Page
 if selection == "Home":
-    st.image(profile_pic, width=180)
+    load_image("profile1.png", width=180)
     st.title("Kwaw Ebenezer")
     st.subheader("Public Health Specialist | Data & ML Practitioner | AI Enthusiast")
 
@@ -69,73 +71,73 @@ elif selection == "CV":
     with col1:
         st.subheader("Technical")
         st.markdown("""
-    - Python, Jupyter Notebook
-    - Pandas, Numpy, Scikit-learn
-    - Streamlit, Power BI, SQL
-    - Excel, Kobo Toolbox
-    - Model Deployment
+- Python, Jupyter Notebook
+- Pandas, Numpy, Scikit-learn
+- Streamlit, Power BI, SQL
+- Excel, Kobo Toolbox
+- Model Deployment
         """)
 
     with col2:
         st.subheader("Public Health / Analytics")
         st.markdown("""
-    - M&E Systems, SBCC
-    - Survey Design
-    - Data Cleaning & Analysis
-    - Predictive Modelling
-    - Health Systems Strengthening
+- M&E Systems, SBCC
+- Survey Design
+- Data Cleaning & Analysis
+- Predictive Modelling
+- Health Systems Strengthening
         """)
 
     with col3:
         st.subheader("Soft Skills")
         st.markdown("""
-    - Leadership & Teamwork
-    - Communication & Reporting
-    - Project Management
-    - Problem Solving
-    - Community Mobilization
+- Leadership & Teamwork
+- Communication & Reporting
+- Project Management
+- Problem Solving
+- Community Mobilization
         """)
 
     st.header("💼 Work Experience")
     st.markdown("""
-    **Public Health Specialist / AI Practitioner** – Self-employed (2025–Present)
-    - Build data-driven tools for public health
-    - Train in cloud & cybersecurity
+**Public Health Specialist / AI Practitioner** – Self-employed (2025–Present)
+- Build data-driven tools for public health
+- Train in cloud & cybersecurity
 
-    **District Nutrition Officer** – GHS, Agona East (2021–Present)
-    - Led immunization programs & emergency preparedness
-    - Developed tools for health monitoring
+**District Nutrition Officer** – GHS, Agona East (2021–Present)
+- Led immunization programs & emergency preparedness
+- Developed tools for health monitoring
 
-    **Program Coordinator – IPTp** – RootsLink Africa (2023–Present)
-    - Coordinated malaria prevention across Agona East
-    - Built M&E tools and campaign materials
+**Program Coordinator – IPTp** – RootsLink Africa (2023–Present)
+- Coordinated malaria prevention across Agona East
+- Built M&E tools and campaign materials
 
-    **Nutritionist** – Samartex Hospital (2018–2021)
-    **Nutritionist** – Shama Health Center (2016–2017)
+**Nutritionist** – Samartex Hospital (2018–2021)
+**Nutritionist** – Shama Health Center (2016–2017)
     """)
 
     st.header("🔬 Research Contributor")
     st.markdown("""
-    **Title:** Assessing the Prevalence of Hypertension and Obesity Among Diabetics in Tamale Metropolis (2017)  
-    🔗 [Read Paper](https://www.researchgate.net/profile/Yussif-Adams/publication/315943323_Assessing_the_Prevalence_of_Hypertension_and_Obesity_among_Diabetics_in_the_Tamale_Metropolis_Ghana/links/5f40c768a6fdcccc43e55e10/Assessing-the-Prevalence-of-Hypertension-and-Obesity-among-Diabetics-in-the-Tamale-Metropolis-Ghana.pdf)
+**Title:** Assessing the Prevalence of Hypertension and Obesity Among Diabetics in Tamale Metropolis (2017)  
+🔗 [Read Paper](https://www.researchgate.net/profile/Yussif-Adams/publication/315943323_Assessing_the_Prevalence_of_Hypertension_and_Obesity_among_Diabetics_in_the_Tamale_Metropolis_Ghana/links/5f40c768a6fdcccc43e55e10/Assessing-the-Prevalence-of-Hypertension-and-Obesity-among-Diabetics-in-the-Tamale-Metropolis-Ghana.pdf)
     """)
 
     st.header("📌 Programs Managed")
     st.markdown("""
-    - Girls’ Iron-Folic Tablet Supplementation (GIFTS)
-    - Wellness Clinic Coordinator, Agona East
-    - IYCF Training Program (with Kokoplus Ghana)
+- Girls’ Iron-Folic Tablet Supplementation (GIFTS)
+- Wellness Clinic Coordinator, Agona East
+- IYCF Training Program (with Kokoplus Ghana)
     """)
 
     st.header("🎓 Education & Certifications")
     st.markdown("""
-    - BSc. Public Health (Nutrition), UDS (2012–2016)
-    - Data Science, Thrive Africa & KTU (2025)
-    - AI & ML, Thrive Africa & KTU (2025)
-    - Cybersecurity, Thrive Africa & KTU (2025)
-    - Data Lab Certificate, WorldQuant University (ongoing)
-    - Cloud Engineer Certificate (ongoing)
-    - M&E and Global Health Courses – University of Washington (2023)
+- BSc. Public Health (Nutrition), UDS (2012–2016)
+- Data Science, Thrive Africa & KTU (2025)
+- AI & ML, Thrive Africa & KTU (2025)
+- Cybersecurity, Thrive Africa & KTU (2025)
+- Data Lab Certificate, WorldQuant University (ongoing)
+- Cloud Engineer Certificate (ongoing)
+- M&E and Global Health Courses – University of Washington (2023)
     """)
 
 # Projects Page
@@ -143,37 +145,37 @@ elif selection == "Projects":
     st.header("🚀 Projects")
 
     st.subheader("ITN Usage Prediction Web App")
-    st.image(project1, caption="ITN Prediction Tool", use_column_width=True)
+    load_image("project.png", caption="ITN Prediction Tool")
     st.markdown("""
-    Developed and deployed a machine learning model to predict ITN usage. Supports malaria prevention planning.
-    
-    🔗 [GitHub](https://github.com/kwaw-ebn/ITN-Usage-Prediction)  
-    🔗 [Live App](https://itn-usage-prediction-nywkrcihz3teyjvze27um8.streamlit.app/)
+Developed and deployed a machine learning model to predict ITN usage. Supports malaria prevention planning.
+
+🔗 [GitHub](https://github.com/kwaw-ebn/ITN-Usage-Prediction)  
+🔗 [Live App](https://itn-usage-prediction-nywkrcihz3teyjvze27um8.streamlit.app/)
     """)
 
     st.subheader("Loan Defaulter Risk Prediction App")
-    st.image(project2, caption="Loan Risk Classifier UI", use_column_width=True)
+    load_image("project2.png", caption="Loan Risk Classifier UI")
     st.markdown("""
-    A supervised ML model to classify loan risk, deployed with an interactive web interface.
+A supervised ML model to classify loan risk, deployed with an interactive web interface.
 
-    🔗 [GitHub](https://github.com/kwaw-ebn/Machine-Learning-Model-to-predict-Loan-Defaulters)  
-    🔗 [Live App](https://machine-learning-model-to-predict-loan-defaulters-mazkvkvr4t2q.streamlit.app/)
+🔗 [GitHub](https://github.com/kwaw-ebn/Machine-Learning-Model-to-predict-Loan-Defaulters)  
+🔗 [Live App](https://machine-learning-model-to-predict-loan-defaulters-mazkvkvr4t2q.streamlit.app/)
     """)
 
     st.subheader("Movie Recommendation System")
-    st.image(project3, caption="Movie Recommender UI", use_column_width=True)
+    load_image("project1.png", caption="Movie Recommender UI")
     st.markdown("""
-    Content-based movie recommender using cosine similarity and Streamlit.
+Content-based movie recommender using cosine similarity and Streamlit.
 
-    🔗 [GitHub](https://github.com/kwaw-ebn/Movie_Recommendation)  
-    🔗 [Live App](https://movierecommendation-khmzfv7djvecuar2hcmc6j.streamlit.app/)
+🔗 [GitHub](https://github.com/kwaw-ebn/Movie_Recommendation)  
+🔗 [Live App](https://movierecommendation-khmzfv7djvecuar2hcmc6j.streamlit.app/)
     """)
 
 # Contact Page
 elif selection == "Contact":
     st.header("📬 Contact")
     st.markdown("""
-    📧 ebenezer.kwaw@ghs.gov.gh / ekwaw4545@gmail.com  
-    🔗 [LinkedIn](https://www.linkedin.com/in/kwaw-ebenezer-a40117159)  
-    📱 +233244837234
+📧 ebenezer.kwaw@ghs.gov.gh / ekwaw4545@gmail.com  
+🔗 [LinkedIn](https://www.linkedin.com/in/kwaw-ebenezer-a40117159)  
+📱 +233244837234
     """)
