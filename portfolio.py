@@ -7,11 +7,11 @@ import os
 # Page config
 st.set_page_config(page_title="Kwaw Ebenezer Portfolio", page_icon="📄", layout="wide")
 
-# Custom Styles with sea blue background
+# Enforce sea blue background (Streamlit-specific containers)
 st.markdown("""
     <style>
-    html, body, [class*="css"]  {
-        background-color: #caf0f8;
+    html, body, [data-testid="stAppViewContainer"] {
+        background-color: #caf0f8 !important;
     }
     a {
         color: #0077b6;
@@ -29,7 +29,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Helper function to load image from 'images/' folder
+# Helper to load image from images/ folder
 def load_image(filename, caption=None, width=None):
     path = os.path.join("images", filename)
     try:
@@ -38,11 +38,7 @@ def load_image(filename, caption=None, width=None):
     except FileNotFoundError:
         st.warning(f"Image '{filename}' not found in 'images/' folder.")
 
-# Profile Picture
-st.header("👋 About Me")
-load_image("profile1.png", width=180)
-
-# Intro
+# ---------- HEADER SECTION ----------
 st.title("Kwaw Ebenezer")
 st.subheader("Public Health Specialist | Data & ML Practitioner | AI Enthusiast")
 
@@ -54,6 +50,11 @@ st.markdown("""
 📄 [Download CV](https://github.com/kwaw-ebn/Portfolio/blob/main/cv.pdf)
 """)
 
+# ---------- PROFILE IMAGE ----------
+load_image("profile1.png", width=180)
+
+# ---------- ABOUT ME ----------
+st.header("👋 About Me")
 st.write("""
 I am a dedicated Public Health Specialist with over 7 years of experience designing and implementing community health and nutrition programs. 
 My mission is to improve lives using evidence-based strategies enhanced with technology.
@@ -62,7 +63,7 @@ I’m currently transitioning into a Data & AI Practitioner role, applying machi
 I’m passionate about using AI and digital health to improve lives in low-resource settings and open to collaborating on impactful data-driven projects.
 """)
 
-# Skills
+# ---------- SKILLS ----------
 st.header("🛠 Skills")
 col1, col2, col3 = st.columns(3)
 
@@ -96,7 +97,7 @@ with col3:
 - Community Mobilization
     """)
 
-# Projects
+# ---------- PROJECTS ----------
 st.header("🚀 Projects")
 
 st.subheader("ITN Usage Prediction Web App")
@@ -126,7 +127,7 @@ Content-based movie recommender using cosine similarity and Streamlit.
 🔗 [Live App](https://movierecommendation-khmzfv7djvecuar2hcmc6j.streamlit.app/)
 """)
 
-# Experience
+# ---------- EXPERIENCE ----------
 st.header("💼 Work Experience")
 st.markdown("""
 **Public Health Specialist / AI Practitioner** – Self-employed (2025–Present)  
@@ -145,14 +146,14 @@ st.markdown("""
 **Nutritionist** – Shama Health Center (2016–2017)  
 """)
 
-# Research
+# ---------- RESEARCH ----------
 st.header("🔬 Research Contributor")
 st.markdown("""
 **Title:** Assessing the Prevalence of Hypertension and Obesity Among Diabetics in Tamale Metropolis (2017)  
 🔗 [Read Paper](https://www.researchgate.net/profile/Yussif-Adams/publication/315943323_Assessing_the_Prevalence_of_Hypertension_and_Obesity_among_Diabetics_in_the_Tamale_Metropolis_Ghana/links/5f40c768a6fdcccc43e55e10/Assessing-the-Prevalence-of-Hypertension-and-Obesity-among-Diabetics-in-the-Tamale-Metropolis-Ghana.pdf)
 """)
 
-# Programs Managed
+# ---------- PROGRAMS MANAGED ----------
 st.header("📌 Programs Managed")
 st.markdown("""
 - Girls’ Iron-Folic Tablet Supplementation (GIFTS)  
@@ -160,7 +161,7 @@ st.markdown("""
 - IYCF Training Program (with Kokoplus Ghana)  
 """)
 
-# Education
+# ---------- EDUCATION ----------
 st.header("🎓 Education & Certifications")
 st.markdown("""
 - BSc. Public Health (Nutrition), UDS (2012–2016)  
@@ -172,7 +173,7 @@ st.markdown("""
 - M&E and Global Health Courses – University of Washington (2023)  
 """)
 
-# Contact
+# ---------- CONTACT ----------
 st.header("📬 Contact")
 st.markdown("""
 📧 ebenezer.kwaw@ghs.gov.gh / ekwaw4545@gmail.com  
